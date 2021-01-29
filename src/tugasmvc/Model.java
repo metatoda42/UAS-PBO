@@ -111,6 +111,10 @@ public class Model {
         }	
     }
     
+    public void reset() {
+    	
+    }
+    
     public String[][] read(){
         try{
             int jmlData = 0;

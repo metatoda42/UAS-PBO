@@ -34,6 +34,7 @@ public class View extends JFrame{
 	JButton jbdelete = new JButton("Delete");
 	JButton jbtambah = new JButton("Tambah");
 	JButton jbcari = new JButton("Cari");
+	JButton jbreset = new JButton("Reset");
 	
 	JTable tabel;
     DefaultTableModel dtm;
@@ -98,6 +99,8 @@ public class View extends JFrame{
         panelutama.add(jbdelete);
         jbtambah.setBounds(180, 231, 72, 20);
         panelutama.add(jbtambah);
+        jbreset.setBounds(262, 231, 64, 20);
+        panelutama.add(jbreset);
 		
 	}
 	//GETTERS

@@ -95,22 +95,32 @@ public class Model {
         }	
     }
     
-    public void cari(String cari) {
-    	try {
 
-        	String  query = "SELECT * FROM `bukualamat` WHERE `Nama` LIKE '"+cari+"'";
-       
-            statement = (Statement) koneksi.createStatement();
-            statement.executeUpdate(query); //execute querynya
-            System.out.println("Berhasil ditambahkan");
-            JOptionPane.showMessageDialog(null, "Data Berhasil ditambahkan");
-
-        } catch (Exception sql) {
-            System.out.println(sql.getMessage());   
-            JOptionPane.showMessageDialog(null, sql.getMessage());
-        }	
+    public String[][] cari(String cari){
+        try{
+            int jmlData = 0;
+            
+            String data[][] = new String[getBanyakData()][6]; 
+            
+            String query = "SELECT * FROM `bukualamat` WHERE `Nama` LIKE '"+cari+"'"; 
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                data[jmlData][0] = resultSet.getString("ID");
+                data[jmlData][1] = resultSet.getString("Nama");                
+                data[jmlData][2] = resultSet.getString("Alamat");
+                data[jmlData][3] = resultSet.getString("Telp");
+                data[jmlData][4] = resultSet.getString("TglLahir");
+                data[jmlData][5] = resultSet.getString("Jeniskelamin");
+                jmlData++;
+            }
+            return data;
+               
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
+        }
     }
-    
     public void reset() {
     	
     }

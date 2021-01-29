@@ -62,7 +62,7 @@ public class canvas extends JFrame{
         jlid.setBounds(10, 44, 11, 14);
         
         panelutama.add(jlid);
-        jtcari.setBounds(649, 231, 174, 20);
+        jtcari.setBounds(612, 231, 174, 20);
         
         panelutama.add(jtcari);
         jlnama.setBounds(10, 69, 27, 14);
@@ -97,19 +97,19 @@ public class canvas extends JFrame{
         jcjekel.setBounds(94, 166, 158, 20);
         jcjekel.setModel(new DefaultComboBoxModel<String>(new String[] {"Laki-Laki", "Perempuan", "Attack Helicopter"}));
         panelutama.add(jcjekel);
-        jbsave.setBounds(94, 197, 72, 20);
+        jbsave.setBounds(79, 197, 87, 20);
         
         panelutama.add(scrollPane);
         panelutama.add(jbsave);
-        jbcari.setBounds(833, 231, 51, 20);
+        jbcari.setBounds(812, 231, 72, 20);
         panelutama.add(jbcari);
-        jbedit.setBounds(180, 197, 72, 20);
+        jbedit.setBounds(165, 197, 87, 20);
         panelutama.add(jbedit);
-        jbdelete.setBounds(94, 231, 72, 20);
+        jbdelete.setBounds(79, 231, 87, 20);
         panelutama.add(jbdelete);
-        jbtambah.setBounds(180, 231, 72, 20);
+        jbtambah.setBounds(165, 231, 87, 20);
         panelutama.add(jbtambah);
-        jbreset.setBounds(262, 231, 64, 20);
+        jbreset.setBounds(262, 231, 87, 20);
         panelutama.add(jbreset);
 		
 	}

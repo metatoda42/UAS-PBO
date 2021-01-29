@@ -28,7 +28,7 @@ public class View extends JFrame{
 	JTextField jttlm = new JTextField();
 	JTextField jttld = new JTextField();
 	JTextField jtcari = new JTextField();
-	String[] jekel = {"Laki-Laki","Perempuan","Attack Helicopter"};
+	String[] jekel = {"L","P"};
 	JComboBox<String> jcjekel = new JComboBox<String> ();
 	
 	JButton jbsave = new JButton("Save");
@@ -100,22 +100,22 @@ public class View extends JFrame{
         jttld.setEnabled(false);
         panelutama.add(jttld);
         jcjekel.setBounds(94, 166, 158, 20);
-        jcjekel.setModel(new DefaultComboBoxModel<String>(new String[] {"Laki-Laki", "Perempuan", "Attack Helicopter"}));
+        jcjekel.setModel(new DefaultComboBoxModel<String>(new String[] {"L", "P"}));
         jcjekel.setEnabled(false);
         panelutama.add(jcjekel);
         jbsave.setBounds(94, 197, 72, 20);
         
         panelutama.add(scrollPane);
         panelutama.add(jbsave);
-        jbcari.setBounds(833, 231, 51, 20);
+        jbcari.setBounds(812, 231, 72, 20);
         panelutama.add(jbcari);
-        jbedit.setBounds(180, 197, 72, 20);
+        jbedit.setBounds(165, 197, 87, 20);
         panelutama.add(jbedit);
-        jbdelete.setBounds(94, 231, 72, 20);
+        jbdelete.setBounds(79, 231, 87, 20);
         panelutama.add(jbdelete);
-        jbtambah.setBounds(180, 231, 72, 20);
+        jbtambah.setBounds(165, 231, 87, 20);
         panelutama.add(jbtambah);
-        jbreset.setBounds(262, 231, 64, 20);
+        jbreset.setBounds(262, 231, 87, 20);
         panelutama.add(jbreset);
 		
 	}
@@ -124,6 +124,12 @@ public class View extends JFrame{
 	public int getID() {
 		int fish = Integer.parseInt(jtid.getText());
 		return fish;
+	}
+	
+	public boolean cekID() {
+		if(jtid.getText()=="")
+			return false;
+		else return true;
 	}
 	public String getNama() {
 		return jtnama.getText();
@@ -135,14 +141,37 @@ public class View extends JFrame{
 		return jttelp.getText();
 	}
 	public String getTanggal() {
-		String tanggal = jttld.getText()+"-"+jttlm.getText()+"-"+jttly.getText();
+		String tanggal = jttly.getText()+"-"+jttlm.getText()+"-"+jttld.getText();
 		return tanggal;
 	}
 	public String getJekel() {
 		return (String) jcjekel.getSelectedItem();
 	}
 	
+	public String getCari() {
+		return jtcari.getText();
+	}
 	
+	public void disableall() {
+		jtid.setEnabled(false);
+		jtnama.setEnabled(false);
+		jtalamat.setEnabled(false);
+		jttelp.setEnabled(false);
+		jttld.setEnabled(false);
+		jttlm.setEnabled(false);
+		jttly.setEnabled(false);
+		jcjekel.setEnabled(false);
+	}
+	public void enableall() {
+		jtid.setEnabled(true);
+		jtnama.setEnabled(true);
+		jtalamat.setEnabled(true);
+		jttelp.setEnabled(true);
+		jttld.setEnabled(true);
+		jttlm.setEnabled(true);
+		jttly.setEnabled(true);
+		jcjekel.setEnabled(true);
+	}
 	
 	
 	

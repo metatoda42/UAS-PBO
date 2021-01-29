@@ -20,48 +20,78 @@ import javax.swing.JTable;
 
 public class Controller {
 	int mastervariable=0;
+	int controlvariable=0;
     Model model;
     View view;
     
     public Controller(View view, Model model){
         this.model = model;
         this.view = view;
-        
+        view.jbsave.setEnabled(false);
+        view.jbedit.setEnabled(false);
         if (model.getBanyakData() != 0) {
             String dataMahasiswa[][] = model.read();
             view.tabel.setModel((new JTable(dataMahasiswa, view.namaKolom)).getModel());
         } else {
             JOptionPane.showMessageDialog(null, "Data Tidak Ada");
         }
-
+        
+        
         view.jbsave.addActionListener(new ActionListener() {//Tombol Simpan
             @Override
             public void actionPerformed(ActionEvent e) {
+            	mastervariable=0;
+            	
+            	int ID = 0;
                 String nama = view.getNama();
                 String alamat = view.getAlamat();
                 String jekel = view.getJekel();
                 String tanggal = view.getTanggal();
                 String notelp = view.getTelepon();
-                model.tambah(nama, jekel, alamat, notelp, tanggal);
-
+                if(controlvariable==2) {
+                	model.tambah(nama, alamat, jekel, notelp, tanggal);
+                }
+                else {
+                	ID=view.getID();
+                	model.update(ID,nama, alamat, jekel, notelp, tanggal);
+                }
+                
                 String dataMahasiswa[][] = model.read();
                 view.tabel.setModel(new JTable(dataMahasiswa, view.namaKolom).getModel());
+                view.disableall();
+                view.jbsave.setEnabled(false);
             }
         });
         
         view.jbedit.addActionListener(new ActionListener() {//Tombol Update
             @Override
             public void actionPerformed(ActionEvent ae) {
-            	int id = view.getID();
-            	String nama = view.getNama();
-                String alamat = view.getAlamat();
-                String jekel = view.getJekel();
-                String tanggal = view.getTanggal();
-                String notelp = view.getTelepon();
-                model.update(id, nama, jekel, alamat, notelp, tanggal);
-
-                String data[][] = model.read();
-                view.tabel.setModel(new JTable(data, view.namaKolom).getModel());
+            	view.enableall();
+            	view.jtid.setEnabled(false);
+            	view.jbsave.setEnabled(true);
+            	controlvariable=1;
+            }
+        });
+        
+        view.jbcari.addActionListener(new ActionListener() {//Tombol Update
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            	
+            	String dataMahasiswa[][] = model.cari(view.getCari());
+                view.tabel.setModel(new JTable(dataMahasiswa, view.namaKolom).getModel());
+                view.disableall();
+                view.jbsave.setEnabled(false);
+            }
+        });
+        
+        view.jbtambah.addActionListener(new ActionListener() {//Tombol Update
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            	view.jtid.setText(null);
+            	view.enableall();
+            	view.jtid.setEnabled(false);
+            	view.jbsave.setEnabled(true);
+            	controlvariable=2;
             }
         });
         
@@ -77,8 +107,9 @@ public class Controller {
         view.tabel.addMouseListener(new MouseAdapter() {//Handling Buat Table
             public void mouseClicked(MouseEvent e) {
                 super.mousePressed(e);
+                mastervariable=0;
                 int baris = view.tabel.getSelectedRow();
-                
+                view.jbedit.setEnabled(true);
                 String dataterpilih = (String) view.tabel.getValueAt(baris, 0);
                 int data=Integer.parseInt(dataterpilih);
                 view.jtid.setText(dataterpilih);
@@ -87,7 +118,7 @@ public class Controller {
                 
                 view.jbdelete.addActionListener(new ActionListener() {
 	                public void actionPerformed(ActionEvent ae){
-	                	if(mastervariable>0) {
+	                	if(mastervariable==0) {
 	                		int input = JOptionPane.showConfirmDialog(null,"Apa anda ingin menghapus " + dataterpilih + "?", "Perhatian", JOptionPane.YES_NO_OPTION);
 		                    if (input == 0) {
 			                    model.delete(data);

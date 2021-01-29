@@ -76,25 +76,32 @@ public class View extends JFrame{
         jljekel.setBounds(10, 169, 63, 14);
         panelutama.add(jljekel);
         jtid.setBounds(94, 41, 158, 20);
-        
+        jtid.setEnabled(false);
         panelutama.add(jtid);
         jtnama.setBounds(94, 66, 158, 20);
+        jtnama.setEnabled(false);
         panelutama.add(jtnama);
         jtalamat.setBounds(94, 91, 158, 20);
+        jtalamat.setEnabled(false);
         panelutama.add(jtalamat);
         jttelp.setBounds(94, 116, 158, 20);
+        jttelp.setEnabled(false);
         panelutama.add(jttelp);
         jttly.setToolTipText("Year");
         jttly.setBounds(180, 141, 72, 20);
+        jttly.setEnabled(false);
         panelutama.add(jttly);
         jttlm.setToolTipText("MONTH");
         jttlm.setBounds(145, 141, 34, 20);
+        jttlm.setEnabled(false);
         panelutama.add(jttlm);
         jttld.setToolTipText("DAY");
         jttld.setBounds(94, 141, 51, 20);
+        jttld.setEnabled(false);
         panelutama.add(jttld);
         jcjekel.setBounds(94, 166, 158, 20);
         jcjekel.setModel(new DefaultComboBoxModel<String>(new String[] {"Laki-Laki", "Perempuan", "Attack Helicopter"}));
+        jcjekel.setEnabled(false);
         panelutama.add(jcjekel);
         jbsave.setBounds(94, 197, 72, 20);
         

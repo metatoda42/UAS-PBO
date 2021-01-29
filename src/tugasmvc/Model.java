@@ -20,7 +20,7 @@ public class Model {
     public Model(){
         try{
             Class.forName(JDBC_DRIVER);
-            koneksi = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/MyDataku?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+            koneksi = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/mydataku?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
             System.out.println("Koneksi Berhasil");
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -31,7 +31,7 @@ public class Model {
     public void tambah(String nama, String alamat, String jekel, String notelp, String tl) {
     	try {
 
-        	String  query = "INSERT INTO siswa(Nama, Alamat, Telp, TglLahir, Jeniskelamin) "
+        	String  query = "INSERT INTO bukualamat (Nama, Alamat, Telp, TglLahir, Jeniskelamin) "
         			+ "VALUES ('"+nama+"','"+alamat+"','"+notelp+"','"+tl+"','"+jekel+"')";
        
             statement = (Statement) koneksi.createStatement();
@@ -48,7 +48,7 @@ public class Model {
     public void save(String nama, String alamat, String jekel, String notelp, String tl) {
     	try {
 
-        	String  query = "INSERT INTO siswa(Nama, Alamat, Telp, TglLahir, Jeniskelamin) "
+        	String  query = "INSERT INTO bukualamat(Nama, Alamat, Telp, TglLahir, Jeniskelamin) "
         			+ "VALUES ('"+nama+"','"+alamat+"','"+notelp+"','"+tl+"','"+jekel+"')";
        
             statement = (Statement) koneksi.createStatement();
@@ -119,9 +119,9 @@ public class Model {
         try{
             int jmlData = 0;
             
-            String data[][] = new String[getBanyakData()][5]; 
+            String data[][] = new String[getBanyakData()][6]; 
             
-            String query = "Select * from MyDataku"; 
+            String query = "Select * from bukualamat"; 
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
                 data[jmlData][0] = resultSet.getString("ID");
@@ -145,7 +145,7 @@ public class Model {
         int jmlData = 0;
         try{
             statement = koneksi.createStatement();
-            String query = "Select * from MyDataku";
+            String query = "Select * from bukualamat";
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){ 
                 jmlData++;

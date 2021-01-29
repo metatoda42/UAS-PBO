@@ -75,6 +75,7 @@ public class canvas extends JFrame{
         panelutama.add(jltl);
         jljekel.setBounds(10, 169, 63, 14);
         panelutama.add(jljekel);
+        jtid.setEnabled(false);
         jtid.setBounds(94, 41, 158, 20);
         
         panelutama.add(jtid);

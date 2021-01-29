@@ -79,7 +79,9 @@ public class Controller {
                 super.mousePressed(e);
                 int baris = view.tabel.getSelectedRow();
                 
-                int dataterpilih = (int) view.tabel.getValueAt(baris, 0);
+                String dataterpilih = (String) view.tabel.getValueAt(baris, 0);
+                int data=Integer.parseInt(dataterpilih);
+                view.jtid.setText(dataterpilih);
                 
                 System.out.println(dataterpilih);
                 
@@ -88,7 +90,7 @@ public class Controller {
 	                	if(mastervariable>0) {
 	                		int input = JOptionPane.showConfirmDialog(null,"Apa anda ingin menghapus " + dataterpilih + "?", "Perhatian", JOptionPane.YES_NO_OPTION);
 		                    if (input == 0) {
-			                    model.delete(dataterpilih);
+			                    model.delete(data);
 			                    String dataMahasiswa[][] = model.read();
 			                    view.tabel.setModel(new JTable(dataMahasiswa, view.namaKolom).getModel());
 			                    mastervariable+=1;

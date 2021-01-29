@@ -24,7 +24,9 @@ public class canvas extends JFrame{
 	JTextField jtnama = new JTextField();
 	JTextField jtalamat = new JTextField();
 	JTextField jttelp = new JTextField();
-	JTextField jttl = new JTextField();
+	JTextField jttly = new JTextField();
+	JTextField jttlm = new JTextField();
+	JTextField jttld = new JTextField();
 	JTextField jtcari = new JTextField();
 	String[] jekel = {"Laki-Laki","Perempuan","Attack Helicopter"};
 	JComboBox<String> jcjekel = new JComboBox<String> ();
@@ -82,8 +84,15 @@ public class canvas extends JFrame{
         panelutama.add(jtalamat);
         jttelp.setBounds(94, 116, 158, 20);
         panelutama.add(jttelp);
-        jttl.setBounds(94, 141, 158, 20);
-        panelutama.add(jttl);
+        jttly.setToolTipText("Year");
+        jttly.setBounds(180, 141, 72, 20);
+        panelutama.add(jttly);
+        jttlm.setToolTipText("MONTH");
+        jttlm.setBounds(145, 141, 34, 20);
+        panelutama.add(jttlm);
+        jttld.setToolTipText("DAY");
+        jttld.setBounds(94, 141, 51, 20);
+        panelutama.add(jttld);
         jcjekel.setBounds(94, 166, 158, 20);
         jcjekel.setModel(new DefaultComboBoxModel<String>(new String[] {"Laki-Laki", "Perempuan", "Attack Helicopter"}));
         panelutama.add(jcjekel);
@@ -119,7 +128,8 @@ public class canvas extends JFrame{
 		return jttelp.getText();
 	}
 	public String getTanggal() {
-		return jttl.getText();
+		String tanggal = jttld.getText()+"-"+jttlm.getText()+"-"+jttly.getText();
+		return tanggal;
 	}
 	public String getJekel() {
 		return (String) jcjekel.getSelectedItem();

@@ -60,8 +60,8 @@ public class Controller {
                 String notelp = view.getTelepon();
                 model.update(id, nama, jekel, alamat, notelp, tanggal);
 
-                String dataMahasiswa[][] = model.read();
-                view.tabel.setModel(new JTable(dataMahasiswa, view.namaKolom).getModel());
+                String data[][] = model.read();
+                view.tabel.setModel(new JTable(data, view.namaKolom).getModel());
             }
         });
         

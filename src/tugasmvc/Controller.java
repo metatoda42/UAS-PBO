@@ -98,7 +98,14 @@ public class Controller {
         view.jbreset.addActionListener(new ActionListener() {//Tombol Reset
             @Override
             public void actionPerformed(ActionEvent ae) {
-                model.reset();
+                view.jtalamat.setText(null);
+                view.jtnama.setText(null);
+                view.jttelp.setText(null);
+                view.jtid.setText(null);
+                view.jttld.setText(null);
+                view.jttlm.setText(null);
+                view.jttly.setText(null);
+                view.jbedit.setEnabled(false);
                 String data[][] = model.read();
                 view.tabel.setModel(new JTable(data, view.namaKolom).getModel());
             }

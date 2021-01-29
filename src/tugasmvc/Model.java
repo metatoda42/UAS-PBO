@@ -121,9 +121,6 @@ public class Model {
             return null;
         }
     }
-    public void reset() {
-    	
-    }
     
     public String[][] read(){
         try{
